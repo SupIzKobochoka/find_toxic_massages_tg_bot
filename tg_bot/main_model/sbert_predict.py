@@ -3,7 +3,7 @@ import torch
 from transformers import AutoTokenizer, AutoModel
 
 
-model_rf = joblib.load('model.pkl')
+model_rf = joblib.load('tg_bot/main_model/model.pkl')
 
 
 tokenizer = AutoTokenizer.from_pretrained("ai-forever/sbert_large_nlu_ru")
