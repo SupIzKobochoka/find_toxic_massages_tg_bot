@@ -34,7 +34,7 @@ log = logging.getLogger("toxbot")
 load_dotenv("tg_bot/token.env")
 API_KEY = os.getenv("API_TOKEN")
 if not API_KEY:
-    raise RuntimeError("Не найден API_KEY в tg_bot/token.env")
+    raise RuntimeError("Не найден API_KEY в tg_bot/api_key.env")
 
 # ───────────────— СОСТОЯНИЕ БОТА НА КАЖДЫЙ ЧАТ ───────────────—
 @dataclass
@@ -167,7 +167,6 @@ async def cmd_joke(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ───────────────────── ОБРАБОТКА ТЕКСТА ─────────────────────
 async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    print(update.to_dict())
     if not update.message:
         return
 
