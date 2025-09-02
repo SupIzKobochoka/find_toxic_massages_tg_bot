@@ -1,4 +1,4 @@
-# bot.py
+# всего бота написал chatGPT, вроде работает, за качество не особо отвечаю
 import logging
 
 import os
@@ -17,8 +17,11 @@ from telegram.ext import (
     filters,
 )
 
-import aiohttp
-import asyncio
+import re
+import requests
+
+# import aiohttp
+# import asyncio
 
 # ───────────────────────── ЛОГИ ─────────────────────────
 logging.basicConfig(
@@ -52,10 +55,7 @@ def get_state(chat_id: int) -> ChatState:
 
 
 # ──────────────── УТИЛИТЫ ─────────────────
-import re
-import requests
-from telegram import Update
-from telegram.ext import ContextTypes
+
 
 def get_joke_from_api() -> str:
     url = "http://rzhunemogu.ru/RandJSON.aspx?CType=1"
