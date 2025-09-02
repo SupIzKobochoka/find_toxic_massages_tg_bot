@@ -31,10 +31,10 @@ logging.basicConfig(
 log = logging.getLogger("toxbot")
 
 # ─────────────────────── НАСТРОЙКИ ───────────────────────
-load_dotenv("tg_bot/api_key.env")
-API_KEY = os.getenv("API_KEY")
+load_dotenv("tg_bot/token.env")
+API_KEY = os.getenv("API_TOKEN")
 if not API_KEY:
-    raise RuntimeError("Не найден API_KEY в tg_bot/api_key.env")
+    raise RuntimeError("Не найден API_KEY в tg_bot/token.env")
 
 # ───────────────— СОСТОЯНИЕ БОТА НА КАЖДЫЙ ЧАТ ───────────────—
 @dataclass
@@ -167,6 +167,7 @@ async def cmd_joke(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ───────────────────── ОБРАБОТКА ТЕКСТА ─────────────────────
 async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(update.to_dict())
     if not update.message:
         return
 
